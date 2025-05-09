@@ -1,0 +1,20 @@
+7. Siguientes pasos
+Definir models y esquemas Alembic en cada servicio.
+
+Implementar autenticación JWT y roles en Auth Service.
+
+CRUD y endpoints de marcación en Catalog Service.
+
+Cálculo de estadísticas (tiempo total y conteos) en Stats Service.
+
+Plantillas Jinja2 para:
+
+Login/register
+
+Catálogo general, vistos, favoritos
+
+Panel admin con gráficas (Chart.js o similar)
+
+Pruebas end-to-end: Selenium (UI) + pytest (API).
+
+Documentación: capturas de pantallas para cada requisito funcional y manual de instalación paso a paso.

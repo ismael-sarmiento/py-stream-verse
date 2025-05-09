@@ -1,0 +1,35 @@
+users
+├─ id (PK)
+├─ username
+├─ email
+├─ password_hash
+├─ role (“admin” | “client”)
+
+movies
+├─ id (PK)
+├─ title
+├─ duration_min
+├─ image_url
+├─ category
+
+series
+├─ id (PK)
+├─ title
+├─ num_seasons
+├─ num_episodes
+├─ duration_ep_min
+├─ image_url
+├─ category
+
+user_favorites
+├─ user_id (FK → users.id)
+├─ movie_id (FK → movies.id)   (nullable)
+├─ series_id (FK → series.id)   (nullable)
+├─ created_at
+
+user_watched
+├─ user_id (FK → users.id)
+├─ movie_id (FK → movies.id)   (nullable)
+├─ series_id (FK → series.id)   (nullable)
+├─ watched_at
+├─ watch_duration_min

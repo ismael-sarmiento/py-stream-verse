@@ -1,0 +1,68 @@
+1. Descripción general y objetivos
+Escenario
+Crear una plataforma de contenidos audiovisuales similar a Netflix, donde:
+
+Usuarios “clientes” se autentican y navegan catálogos de películas y series.
+
+Pueden ver detalles de cada contenido y marcarlo como “favorito” o “visto” para gestionar su propio historial.
+
+Un usuario “administrador” gestiona tanto usuarios como catálogos de contenidos Proyecto_Final_PROPUEST….
+
+Objetivos
+
+Autenticación y autorización: dos roles (cliente/admin) con permisos diferenciados.
+
+Catálogo CRUD: CRUD de películas y series para administrador; solo lectura (y marcación) para cliente.
+
+Gestión de favoritos y vistos: históricos individuales con listados filtrables.
+
+Estadísticas y gráficas: métricas de consumo por usuario y comparativas para administrador.
+
+Búsqueda: por título y categoría en catálogos.
+
+2. Requisitos funcionales
+
+#	Requisito
+1	Autenticación/roles: registro/login seguro; roles “cliente” y “admin”.
+2	Catálogo para cliente: listar películas y series con título, duración, portadas, etc.
+3	Marcación: opciones “visto” y “favorito” en cada película/serie.
+4	Vistas personalizadas: 4 listados para cliente: catálogo general, vistos, favoritos.
+5	Gráficas/estadísticas: tiempo total y número de contenidos vistos; comparativa admin.
+6	Buscador: filtrar por nombre y/o categoría.
+7	UX/UI: interfaz clara, sencilla e intuitiva.
+—	Documentación: capturas de pantalla y manual de instalación completas.
+Todos estos puntos responden directamente al apartado “DESARROLLO” de la propuesta Proyecto_Final_PROPUEST….
+
+3. Requisitos no funcionales
+Escalabilidad: arquitectura de microservicios (FastAPI + PostgreSQL) para aislar dominios y facilitar despliegue horizontal.
+
+Seguridad: HTTPS, JWT para autenticación, políticas CORS, hash de contraseñas (bcrypt).
+
+Mantenibilidad: código organizado por servicios, use de Alembic para migraciones y pruebas unitarias en cada microservicio.
+
+Rendimiento: índices en PostgreSQL (título, categoría), cache en endpoints de catálogo de alta lectura.
+
+Usabilidad: plantillas Jinja2 con CSS modular (BEM o similar), respuestas JSON claras para futuras API públicas.
+
+4. Arquitectura de alto nivel
+plaintext
+Copiar
+Editar
+┌─────────────────┐              ┌──────────────┐
+│   Cliente Web   │◄─HTTPS──────►│    Gateway   │
+│ (Jinja2 + CSS)  │              │  FastAPI     │
+└─────────────────┘              └──────────────┘
+      │   ▲  ▲                         │  │  │
+      │   │  │                         │  │  └───► Stats Service (FastAPI)
+      │   │  └─────────────────────────┘  └──────► Catalog Service (FastAPI)
+      │   └────────────────────────────────────► Auth Service (FastAPI)
+      └───────────────────────────────────────► PostgreSQL (auth/catalog/stats)
+Gateway: punto único de entrada, renderizado de plantillas y orquestación de peticiones.
+
+Auth Service: gestión de usuarios, roles, tokens JWT.
+
+Catalog Service: CRUD y consultas de películas/series, marcaciones de usuario.
+
+Stats Service: cálculo de métricas y generación de datos para gráficas.
+
+Base de datos única (o esquema separado por servicio) en PostgreSQL para consistencia transaccional.

@@ -1,0 +1,39 @@
+6. Endpoints clave (ejemplos)
+Auth Service
+POST /auth/register
+
+POST /auth/login
+
+GET /auth/users (admin)
+
+PUT /auth/users/{id} (admin)
+
+DELETE /auth/users/{id} (admin)
+
+Catalog Service
+GET /movies/
+
+POST /movies/ (admin)
+
+GET /movies/{id}
+
+PUT /movies/{id} (admin)
+
+DELETE /movies/{id} (admin)
+
+Ídem para /series/
+
+POST /movies/{id}/favorite
+
+POST /series/{id}/watched
+
+GET /users/{user_id}/favorites
+
+GET /users/{user_id}/watched
+
+GET /search?type=movie&query=... (búsqueda)
+
+Stats Service
+GET /stats/users/{user_id}/summary → JSON con totales
+
+GET /stats/compare → JSON para comparativas
