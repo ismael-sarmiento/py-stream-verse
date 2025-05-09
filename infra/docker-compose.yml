@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  #  auth:
+  #    build: ./services/auth-service
+  #    ports:
+  #      - '8001:8000'
+  #  catalog:
+  #    build: ./services/catalog-service
+  #    ports:
+  #      - '8002:8000'
+  #  stats:
+  #    build: ./services/stats-service
+  #    ports:
+  #      - '8003:8000'
+  #  gateway:
+  #    build: ./gateway
+  #    ports:
+  #      - '8000:8000'
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: audiovisual
+    ports:
+      - '5432:5432'
