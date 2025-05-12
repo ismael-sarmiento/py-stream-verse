@@ -1,6 +1,4 @@
 # services/auth-service/tests/test_models.py
-import os
-import tempfile
 import pytest
 from sqlalchemy import create_engine, inspect
 

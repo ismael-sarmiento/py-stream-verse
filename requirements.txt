@@ -1,5 +1,27 @@
-fastapi
-sqlalchemy
-psycopg2-binary
-alembic
-pytest
+# Core API
+fastapi==0.95.1
+uvicorn[standard]==0.22.0
+
+# ORM + DB
+SQLAlchemy==2.0.10
+
+# JWT Auth
+PyJWT==2.7.0
+
+# Data validation (con soporte email)
+pydantic[email]==1.10.12
+email-validator==1.3.1
+
+# Templating
+Jinja2==3.1.2
+
+# Env vars
+python-dotenv==1.0.0
+
+# HTTP client (TestClient dependency)
+httpx==0.24.1
+
+# Testing
+pytest==7.3.1
+pytest-asyncio==0.21.0
+pytest-cov==4.0.0
